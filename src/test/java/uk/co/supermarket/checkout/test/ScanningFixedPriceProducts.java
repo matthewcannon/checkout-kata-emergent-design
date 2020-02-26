@@ -9,11 +9,14 @@ import uk.co.supermarket.Checkout;
 public class ScanningFixedPriceProducts {
 
     @Test
-    void totalPriceShouldBe50AfterScanningItemCodeA() {
-        final Checkout checkout = new Checkout();
+    void totalPriceShouldBeItemPriceAAfterScanningItemCodeA() {
+        final char itemCodeA = 'A';
+        final int itemPriceA = 50;
 
-        final int totalPrice = checkout.scan('A');
+        final Checkout checkout = new Checkout(itemCodeA, itemPriceA);
 
-        assertThat(totalPrice).isEqualTo(50);
+        final int totalPrice = checkout.scan(itemCodeA);
+
+        assertThat(totalPrice).isEqualTo(itemPriceA);
     }
 }
