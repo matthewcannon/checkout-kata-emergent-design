@@ -7,6 +7,10 @@ public class Checkout {
     private final int itemPriceA;
 
     public Checkout(char itemCodeA, int itemPriceA) {
+        this(itemCodeA, itemPriceA, ' ', 0);
+    }
+
+    public Checkout(char itemCodeA, int itemPriceA, char itemCodeB, int itemPriceB) {
         this.itemCodeA = itemCodeA;
         this.itemPriceA = itemPriceA;
     }

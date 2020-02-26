@@ -19,4 +19,16 @@ public class ScanningFixedPriceProducts {
 
         assertThat(totalPrice).isEqualTo(itemPriceA);
     }
+
+    @Test
+    void totalPriceShouldBeItemPriceBAfterScanningItemCodeB() {
+        final char itemCodeB = 'B';
+        final int itemPriceB = 30;
+
+        final Checkout checkout = new Checkout(' ', 0, itemCodeB, itemPriceB);
+
+        final int totalPrice = checkout.scan(itemCodeB);
+
+        assertThat(totalPrice).isEqualTo(itemPriceB);
+    }
 }
