@@ -35,15 +35,15 @@ public class ScanningFixedPriceProducts {
 
     @Test
     void totalPriceShouldBeCataloguedPriceAfterScanningCataloguedItem() {
-        final char itemCodeB = 'B';
-        final int itemPriceB = 30;
+        final char cataloguedItemCode = 'B';
+        final int cataloguedItemPrice = 30;
 
-        final PricingCatalogue pricingCatalogue = new PricingCatalogue();
+        final PricingCatalogue pricingCatalogue = new PricingCatalogue(cataloguedItemCode, cataloguedItemPrice);
 
-        final Checkout checkout = new Checkout(' ', 0, pricingCatalogue);
+        final Checkout checkout = new Checkout(pricingCatalogue);
 
-        final int totalPrice = checkout.scan(itemCodeB);
+        final int totalPrice = checkout.scan(cataloguedItemCode);
 
-        assertThat(totalPrice).isEqualTo(itemPriceB);
+        assertThat(totalPrice).isEqualTo(cataloguedItemPrice);
     }
 }

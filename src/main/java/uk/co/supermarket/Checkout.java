@@ -2,29 +2,23 @@ package uk.co.supermarket;
 
 public class Checkout {
 
-    private final char itemCodeA;
+    private char itemCodeA;
 
-    private final int itemPriceA;
+    private int itemPriceA;
 
-    private final PricingCatalogue pricingCatalogue;
-
-    private char itemCodeB;
-
-    private int itemPriceB;
+    private PricingCatalogue pricingCatalogue;
 
     public Checkout(char itemCodeA, int itemPriceA) {
         this(itemCodeA, itemPriceA, ' ', 0);
     }
 
     public Checkout(char itemCodeA, int itemPriceA, char itemCodeB, int itemPriceB) {
-        this(itemCodeA, itemPriceA, new PricingCatalogue());
-        this.itemCodeB = itemCodeB;
-        this.itemPriceB = itemPriceB;
-    }
-
-    public Checkout(char itemCodeA, int itemPriceA, PricingCatalogue pricingCatalogue) {
+        this(new PricingCatalogue(itemCodeB, itemPriceB));
         this.itemCodeA = itemCodeA;
         this.itemPriceA = itemPriceA;
+    }
+
+    public Checkout(PricingCatalogue pricingCatalogue) {
         this.pricingCatalogue = pricingCatalogue;
     }
 
@@ -33,10 +27,6 @@ public class Checkout {
             return itemPriceA;
         }
 
-        if (itemCode == itemCodeB) {
-            return itemPriceB;
-        }
-
-        return 0;
+        return pricingCatalogue.priceOf(itemCode);
     }
 }
