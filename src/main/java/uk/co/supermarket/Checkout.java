@@ -8,6 +8,8 @@ public class Checkout {
 
     private PricingCatalogue pricingCatalogue;
 
+    private int totalPrice = 0;
+
     public Checkout(char itemCodeA, int itemPriceA) {
         this(itemCodeA, itemPriceA, ' ', 0);
     }
@@ -24,13 +26,15 @@ public class Checkout {
 
     public int scan(char itemCode) {
         if (itemCode == itemCodeA) {
-            return itemPriceA;
+            this.totalPrice = itemPriceA;
+        } else {
+            this.totalPrice = pricingCatalogue.priceOf(itemCode);
         }
 
-        return pricingCatalogue.priceOf(itemCode);
+        return getTotalPrice();
     }
 
     public int getTotalPrice() {
-        return 0;
+        return this.totalPrice;
     }
 }
