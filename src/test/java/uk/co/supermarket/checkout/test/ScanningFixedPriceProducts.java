@@ -32,18 +32,4 @@ public class ScanningFixedPriceProducts {
 
         assertThat(totalPrice).isEqualTo(itemPriceB);
     }
-
-    @Test
-    void totalPriceShouldBeCataloguedPriceAfterScanningCataloguedItem() {
-        final char cataloguedItemCode = 'B';
-        final int cataloguedItemPrice = 30;
-
-        final PricingCatalogue pricingCatalogue = new PricingCatalogue(cataloguedItemCode, cataloguedItemPrice);
-
-        final Checkout checkout = new Checkout(pricingCatalogue);
-
-        final int totalPrice = checkout.scan(cataloguedItemCode);
-
-        assertThat(totalPrice).isEqualTo(cataloguedItemPrice);
-    }
 }
