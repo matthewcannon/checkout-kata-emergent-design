@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 
 import uk.co.supermarket.Checkout;
+import uk.co.supermarket.PricingCatalogue;
 
 public class ScanningFixedPriceProducts {
 
@@ -26,6 +27,20 @@ public class ScanningFixedPriceProducts {
         final int itemPriceB = 30;
 
         final Checkout checkout = new Checkout(' ', 0, itemCodeB, itemPriceB);
+
+        final int totalPrice = checkout.scan(itemCodeB);
+
+        assertThat(totalPrice).isEqualTo(itemPriceB);
+    }
+
+    @Test
+    void totalPriceShouldBeCataloguedPriceAfterScanningCataloguedItem() {
+        final char itemCodeB = 'B';
+        final int itemPriceB = 30;
+
+        final PricingCatalogue pricingCatalogue = new PricingCatalogue();
+
+        final Checkout checkout = new Checkout(' ', 0, pricingCatalogue);
 
         final int totalPrice = checkout.scan(itemCodeB);
 

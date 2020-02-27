@@ -6,19 +6,26 @@ public class Checkout {
 
     private final int itemPriceA;
 
-    private final char itemCodeB;
+    private final PricingCatalogue pricingCatalogue;
 
-    private final int itemPriceB;
+    private char itemCodeB;
+
+    private int itemPriceB;
 
     public Checkout(char itemCodeA, int itemPriceA) {
         this(itemCodeA, itemPriceA, ' ', 0);
     }
 
     public Checkout(char itemCodeA, int itemPriceA, char itemCodeB, int itemPriceB) {
-        this.itemCodeA = itemCodeA;
-        this.itemPriceA = itemPriceA;
+        this(itemCodeA, itemPriceA, new PricingCatalogue());
         this.itemCodeB = itemCodeB;
         this.itemPriceB = itemPriceB;
+    }
+
+    public Checkout(char itemCodeA, int itemPriceA, PricingCatalogue pricingCatalogue) {
+        this.itemCodeA = itemCodeA;
+        this.itemPriceA = itemPriceA;
+        this.pricingCatalogue = pricingCatalogue;
     }
 
     public int scan(char itemCode) {
