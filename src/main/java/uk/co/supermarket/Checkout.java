@@ -29,4 +29,8 @@ public class Checkout {
 
         return pricingCatalogue.priceOf(itemCode);
     }
+
+    public int getTotalPrice() {
+        return 0;
+    }
 }
