@@ -13,7 +13,7 @@ public class PricingCatalogue {
 
     public int priceOf(char itemCode) {
         if (itemCode == this.itemCode) {
-            return this.itemPrice;
+            return itemPrice;
         }
 
         return 0;

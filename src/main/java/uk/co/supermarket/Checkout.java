@@ -26,15 +26,15 @@ public class Checkout {
 
     public int scan(char itemCode) {
         if (itemCode == itemCodeA) {
-            this.totalPrice = itemPriceA;
+            totalPrice = itemPriceA;
         } else {
-            this.totalPrice = pricingCatalogue.priceOf(itemCode);
+            totalPrice = pricingCatalogue.priceOf(itemCode);
         }
 
         return getTotalPrice();
     }
 
     public int getTotalPrice() {
-        return this.totalPrice;
+        return totalPrice;
     }
 }
