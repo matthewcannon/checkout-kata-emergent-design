@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import uk.co.supermarket.Checkout;
 import uk.co.supermarket.PricingCatalogue;
 
-public class ScanningFixedPriceProducts {
+public final class ScanningFixedPriceProducts {
 
     @Test
     void totalPriceShouldBeItemPriceAAfterScanningItemCodeA() {

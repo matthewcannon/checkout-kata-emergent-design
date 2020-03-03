@@ -3,7 +3,7 @@ package uk.co.supermarket;
 import org.eclipse.collections.api.map.primitive.MutableCharIntMap;
 import org.eclipse.collections.impl.map.mutable.primitive.CharIntHashMap;
 
-public class PricingCatalogue {
+public final class PricingCatalogue {
 
     private MutableCharIntMap items;
 
@@ -20,7 +20,7 @@ public class PricingCatalogue {
         return items.get(itemCode);
     }
 
-    public final void addItem(char itemCode, int itemPrice) {
+    public void addItem(char itemCode, int itemPrice) {
         items.addToValue(itemCode, itemPrice);
     }
 }

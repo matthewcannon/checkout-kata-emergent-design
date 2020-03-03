@@ -1,10 +1,6 @@
 package uk.co.supermarket;
 
-public class Checkout {
-
-    private char itemCodeA;
-
-    private int itemPriceA;
+public final class Checkout {
 
     private PricingCatalogue pricingCatalogue;
 

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import uk.co.supermarket.PricingCatalogue;
 
-public class CataloguingItemCodesAndPrices {
+public final class CataloguingItemCodesAndPrices {
 
     @Test
     void catalogueShouldKnowThePriceOfOneItem() {
