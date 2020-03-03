@@ -20,7 +20,7 @@ public class PricingCatalogue {
         return items.get(itemCode);
     }
 
-    public void addItem(char itemCode, int itemPrice) {
+    public final void addItem(char itemCode, int itemPrice) {
         items.addToValue(itemCode, itemPrice);
     }
 }
