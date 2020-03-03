@@ -15,9 +15,10 @@ public class Checkout {
     }
 
     public Checkout(char itemCodeA, int itemPriceA, char itemCodeB, int itemPriceB) {
-        this(new PricingCatalogue(itemCodeB, itemPriceB));
-        this.itemCodeA = itemCodeA;
-        this.itemPriceA = itemPriceA;
+        this(new PricingCatalogue());
+
+        pricingCatalogue.addItem(itemCodeA, itemPriceA);
+        pricingCatalogue.addItem(itemCodeB, itemPriceB);
     }
 
     public Checkout(PricingCatalogue pricingCatalogue) {
@@ -25,11 +26,7 @@ public class Checkout {
     }
 
     public int scan(char itemCode) {
-        if (itemCode == itemCodeA) {
-            totalPrice = itemPriceA;
-        } else {
-            totalPrice = pricingCatalogue.priceOf(itemCode);
-        }
+        totalPrice = pricingCatalogue.priceOf(itemCode);
 
         return getTotalPrice();
     }
