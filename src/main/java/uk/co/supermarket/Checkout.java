@@ -6,17 +6,6 @@ public final class Checkout {
 
     private int totalPrice = 0;
 
-    public Checkout(char itemCodeA, int itemPriceA) {
-        this(itemCodeA, itemPriceA, ' ', 0);
-    }
-
-    public Checkout(char itemCodeA, int itemPriceA, char itemCodeB, int itemPriceB) {
-        this(new PricingCatalogue());
-
-        pricingCatalogue.addItem(itemCodeA, itemPriceA);
-        pricingCatalogue.addItem(itemCodeB, itemPriceB);
-    }
-
     public Checkout(PricingCatalogue pricingCatalogue) {
         this.pricingCatalogue = pricingCatalogue;
     }

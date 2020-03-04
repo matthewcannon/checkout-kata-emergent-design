@@ -36,4 +36,27 @@ public final class ScanningVariablePriceProducts {
 
         assertThat(checkout.getTotalPrice()).isEqualTo(cataloguedItemPrice);
     }
+
+    @Test
+    void totalPriceShouldBePriceOfLastScannedItemAfterScanningTwoCataloguedItems() {
+        final PricingCatalogue pricingCatalogue = new PricingCatalogue();
+
+        final char itemCodeA = 'A';
+        final char itemPriceA = 50;
+
+        pricingCatalogue.addItem(itemCodeA, itemPriceA);
+
+        final char itemCodeB = 'B';
+        final char itemPriceB = 30;
+
+        pricingCatalogue.addItem(itemCodeB, itemPriceB);
+
+        final Checkout checkout = new Checkout(pricingCatalogue);
+
+        int totalPrice = checkout.scan(itemCodeA);
+        assertThat(totalPrice).isEqualTo(itemPriceA);
+
+        totalPrice = checkout.scan(itemCodeB);
+        assertThat(totalPrice).isEqualTo(itemPriceB);
+    }
 }
