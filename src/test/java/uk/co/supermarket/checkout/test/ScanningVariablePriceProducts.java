@@ -21,9 +21,9 @@ public final class ScanningVariablePriceProducts {
 
         final Checkout checkout = new Checkout(pricingCatalogue);
 
-        final int totalPrice = checkout.scan(cataloguedItemCode);
+        checkout.scan(cataloguedItemCode);
 
-        assertThat(totalPrice).isEqualTo(cataloguedItemPrice);
+        assertThat(checkout.getTotalPrice()).isEqualTo(cataloguedItemPrice);
     }
 
     @Test
@@ -56,11 +56,13 @@ public final class ScanningVariablePriceProducts {
 
         final Checkout checkout = new Checkout(pricingCatalogue);
 
-        int totalPrice = checkout.scan(itemCodeA);
-        assertThat(totalPrice).isEqualTo(itemPriceA);
+        checkout.scan(itemCodeA);
 
-        totalPrice = checkout.scan(itemCodeB);
-        assertThat(totalPrice).isEqualTo(itemPriceB);
+        assertThat(checkout.getTotalPrice()).isEqualTo(itemPriceA);
+
+        checkout.scan(itemCodeB);
+
+        assertThat(checkout.getTotalPrice()).isEqualTo(itemPriceB);
     }
 
     @Test
@@ -76,7 +78,7 @@ public final class ScanningVariablePriceProducts {
 
         final Checkout checkout = new Checkout(pricingCatalogue, buyer);
 
-        int totalPrice = checkout.scan(itemCodeA);
+        checkout.scan(itemCodeA);
 
         verify(buyer).receiveTotalPrice(itemPriceA);
     }

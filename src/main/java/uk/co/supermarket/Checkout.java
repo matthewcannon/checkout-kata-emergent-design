@@ -18,12 +18,10 @@ public final class Checkout {
         this.buyer = buyer;
     }
 
-    public int scan(char itemCode) {
+    public void scan(char itemCode) {
         totalPrice = pricingCatalogue.priceOf(itemCode);
 
         buyer.receiveTotalPrice(totalPrice);
-
-        return getTotalPrice();
     }
 
     public int getTotalPrice() {
