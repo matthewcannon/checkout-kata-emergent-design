@@ -2,21 +2,18 @@ package uk.co.supermarket;
 
 public final class Checkout {
 
-    private PricingCatalogue pricingCatalogue;
+    private final PricingCatalogue pricingCatalogue;
 
-    private int totalPrice = 0;
+    private final Buyer buyer;
 
-    public Checkout(PricingCatalogue pricingCatalogue) {
+    public Checkout(PricingCatalogue pricingCatalogue, Buyer buyer) {
         this.pricingCatalogue = pricingCatalogue;
+        this.buyer = buyer;
     }
 
-    public int scan(char itemCode) {
-        totalPrice = pricingCatalogue.priceOf(itemCode);
+    public void scan(char itemCode) {
+        final int totalPrice = pricingCatalogue.priceOf(itemCode);
 
-        return getTotalPrice();
-    }
-
-    public int getTotalPrice() {
-        return totalPrice;
+        buyer.receiveTotalPrice(totalPrice);
     }
 }
