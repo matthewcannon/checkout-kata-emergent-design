@@ -74,7 +74,7 @@ public final class ScanningVariablePriceProducts {
 
         Buyer buyer = mock(Buyer.class);
 
-        final Checkout checkout = new Checkout(pricingCatalogue);
+        final Checkout checkout = new Checkout(pricingCatalogue, buyer);
 
         int totalPrice = checkout.scan(itemCodeA);
 
