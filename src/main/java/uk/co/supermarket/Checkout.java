@@ -6,25 +6,14 @@ public final class Checkout {
 
     private PricingCatalogue pricingCatalogue;
 
-    private int totalPrice = 0;
-
-    public Checkout(PricingCatalogue pricingCatalogue) {
-        this.pricingCatalogue = pricingCatalogue;
-        buyer = new NullBuyer();
-    }
-
     public Checkout(PricingCatalogue pricingCatalogue, Buyer buyer) {
-        this(pricingCatalogue);
+        this.pricingCatalogue = pricingCatalogue;
         this.buyer = buyer;
     }
 
     public void scan(char itemCode) {
-        totalPrice = pricingCatalogue.priceOf(itemCode);
+        final int totalPrice = pricingCatalogue.priceOf(itemCode);
 
         buyer.receiveTotalPrice(totalPrice);
-    }
-
-    public int getTotalPrice() {
-        return totalPrice;
     }
 }
